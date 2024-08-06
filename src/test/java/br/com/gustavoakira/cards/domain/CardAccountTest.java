@@ -1,5 +1,6 @@
 package br.com.gustavoakira.cards.domain;
 
+import br.com.gustavoakira.cards.domain.exception.CardNotValidException;
 import org.instancio.Instancio;
 import org.instancio.Model;
 import org.junit.jupiter.api.BeforeAll;
@@ -52,7 +53,8 @@ class CardAccountTest {
 
     @Test
     void shouldThrownCardNotValidExceptionWhenChargeInvalidCard(){
-
+        CardAccount account = Instancio.create(invalidCardAccountModel);
+        assertThrows(CardNotValidException.class,()->account.charge(BigDecimal.ONE));
     }
 
     @Test
