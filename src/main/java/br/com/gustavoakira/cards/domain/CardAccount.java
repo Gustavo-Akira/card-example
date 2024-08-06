@@ -27,6 +27,10 @@ public class CardAccount {
         return !this.expirationDate.isBefore(LocalDateTime.now());
     }
 
+    public void makePayment(BigDecimal value) {
+        this.balance = this.balance.subtract(value);
+    }
+
     public void charge(BigDecimal value) {
         this.balance = this.balance.add(value);
     }
@@ -70,4 +74,6 @@ public class CardAccount {
     public void setExpirationDate(LocalDateTime expirationDate) {
         this.expirationDate = expirationDate;
     }
+
+
 }

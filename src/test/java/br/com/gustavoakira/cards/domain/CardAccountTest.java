@@ -43,13 +43,12 @@ class CardAccountTest {
 
     @Test
     void shouldMakePaymentWhenCardIsValidAndBalanceIsEnough(){
-
+        CardAccount cardAccount = Instancio.create(validCardAccountModel);
+        BigDecimal oldValue = cardAccount.getBalance();
+        cardAccount.makePayment(BigDecimal.ONE);
+        assertEquals(oldValue.subtract(BigDecimal.ONE), cardAccount.getBalance());
     }
 
-    @Test
-    void shouldShowBalance(){
-
-    }
 
     @Test
     void shouldThrownCardNotValidExceptionWhenChargeInvalidCard(){
@@ -67,7 +66,8 @@ class CardAccountTest {
 
     @Test
     void shouldReturnFalseWhenValidateCardAndInInvalid(){
-
+        CardAccount account = Instancio.create(invalidCardAccountModel);
+        assertFalse(account.validateCard());
     }
 
 
