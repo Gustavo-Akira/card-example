@@ -1,5 +1,7 @@
 package br.com.gustavoakira.cards.domain;
 
+import br.com.gustavoakira.cards.domain.exception.CardNotValidException;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -32,6 +34,9 @@ public class CardAccount {
     }
 
     public void charge(BigDecimal value) {
+        if(!this.validateCard()){
+            throw new CardNotValidException();
+        }
         this.balance = this.balance.add(value);
     }
 
