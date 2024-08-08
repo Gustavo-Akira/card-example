@@ -1,5 +1,6 @@
 package br.com.gustavoakira.cards.domain;
 
+import br.com.gustavoakira.cards.domain.exception.BalanceNotEnoughException;
 import br.com.gustavoakira.cards.domain.exception.CardNotValidException;
 
 import java.math.BigDecimal;
@@ -30,6 +31,13 @@ public class CardAccount {
     }
 
     public void makePayment(BigDecimal value) {
+        if(!validateCard()){
+            throw new CardNotValidException();
+        }
+        if(value.doubleValue() > this.balance.doubleValue()){
+            throw new BalanceNotEnoughException(this.balance, value);
+        }
+
         this.balance = this.balance.subtract(value);
     }
 

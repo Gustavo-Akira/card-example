@@ -1,5 +1,6 @@
 package br.com.gustavoakira.cards.domain;
 
+import br.com.gustavoakira.cards.domain.exception.BalanceNotEnoughException;
 import br.com.gustavoakira.cards.domain.exception.CardNotValidException;
 import org.instancio.Instancio;
 import org.instancio.Model;
@@ -59,11 +60,13 @@ class CardAccountTest {
 
     @Test
     void shouldThrownBalanceExceptionWhenCardIsValidAndBalanceIsNotEnoughToMakePayment(){
-
+        CardAccount account = Instancio.create(validCardAccountModel);
+        assertThrows(BalanceNotEnoughException.class,()->account.makePayment(BigDecimal.valueOf(Long.MAX_VALUE)));
     }
     @Test
     void shouldThrownCardNotValidExceptionWhenMakePaymentWithInvalidCard(){
-
+        CardAccount account = Instancio.create(invalidCardAccountModel);
+        assertThrows(CardNotValidException.class,()->account.makePayment(BigDecimal.valueOf(Long.MIN_VALUE)));
     }
 
     @Test
