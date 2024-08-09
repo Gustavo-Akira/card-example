@@ -10,6 +10,16 @@ public class Transaction{
     private String type;
     private CardAccount account;
 
+    public Transaction(String transactionId, LocalDateTime transactionDate, BigDecimal amount, String type, CardAccount account) {
+        this.transactionId = transactionId;
+        this.transactionDate = transactionDate;
+        this.amount = amount;
+        this.type = type;
+        this.account = account;
+    }
+
+
+
     public String getTransactionId() {
         return transactionId;
     }
