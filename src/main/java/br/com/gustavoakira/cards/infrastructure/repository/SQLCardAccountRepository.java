@@ -2,6 +2,7 @@ package br.com.gustavoakira.cards.infrastructure.repository;
 
 import br.com.gustavoakira.cards.domain.CardAccount;
 import br.com.gustavoakira.cards.domain.CardAccountRepository;
+import br.com.gustavoakira.cards.infrastructure.repository.entity.CardAccountEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,17 +16,17 @@ public class SQLCardAccountRepository implements CardAccountRepository {
     @Override
     public void save(List<CardAccount> cardAccounts) {
         cardAccounts.forEach(cardAccount->{
-            this.repository.save(cardAccount);
+            this.repository.save(CardAccountEntity.fromDomain(cardAccount));
         });
     }
 
     @Override
     public CardAccount findById(String id) {
-        return this.repository.findById(id).orElseThrow();
+        return this.repository.findById(id).orElseThrow().toDomain();
     }
 
     @Override
     public List<CardAccount> findAll() {
-        return this.repository.findAll();
+        return this.repository.findAll().stream().map(CardAccountEntity::toDomain).toList();
     }
 }

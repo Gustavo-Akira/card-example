@@ -3,13 +3,13 @@ package br.com.gustavoakira.cards.domain;
 import java.util.List;
 
 public class CardHolder {
-    private String id;
+    private Long id;
     private String name;
     private String address;
     private String phoneNumber;
     private List<CardAccount> cardAccounts;
 
-    public CardHolder(String id, String name, String address, String phoneNumber, List<CardAccount> cardAccounts) {
+    public CardHolder(Long id, String name, String address, String phoneNumber, List<CardAccount> cardAccounts) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -17,11 +17,11 @@ public class CardHolder {
         this.cardAccounts = cardAccounts;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
