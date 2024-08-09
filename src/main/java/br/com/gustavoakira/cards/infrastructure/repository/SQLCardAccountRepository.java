@@ -13,10 +13,15 @@ public class SQLCardAccountRepository implements CardAccountRepository {
     @Autowired
     private SpringSQlCardAccountRepository repository;
 
+    @Autowired
+    private SpringSQLCardHolderRepository cardHolderRepository;
+
     @Override
     public void save(List<CardAccount> cardAccounts) {
         cardAccounts.forEach(cardAccount->{
-            this.repository.save(CardAccountEntity.fromDomain(cardAccount));
+            CardAccountEntity entity = CardAccountEntity.fromDomain(cardAccount);
+            entity.setCardHolder(cardHolderRepository.findByName(cardAccount.getCardHolderName()).orElseThrow());
+            this.repository.save(entity);
         });
     }
 
