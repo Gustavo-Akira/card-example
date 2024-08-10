@@ -16,11 +16,11 @@ classDiagram
         +Date transactionDate
         +double amount
         +String type
-        +processTransaction()
-        +getTransactionDetails()
+        +makeTransaction()
     }
 
     class CardHolder {
+        +Long id
         +String name
         +String address
         +String phoneNumber
