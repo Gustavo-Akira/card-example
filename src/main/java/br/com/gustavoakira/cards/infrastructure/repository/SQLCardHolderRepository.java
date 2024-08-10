@@ -50,4 +50,10 @@ public class SQLCardHolderRepository implements CardHolderRepository {
         CardHolderEntity entity = this.repository.findByName(name).orElseThrow();
         return entity.toDomain(cardAccountRepository.findByCardHolder(entity).stream().map(CardAccountEntity::toDomain).collect(Collectors.toList()));
     }
+
+    @Override
+    public void remove(String name) {
+
+        this.repository.delete(this.repository.findByName(name).orElseThrow());
+    }
 }

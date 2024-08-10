@@ -11,4 +11,5 @@ public interface CardHolderRepository {
     CardHolder findById(Long id);
     List<CardHolder> findAll();
     CardHolder findByName(String name);
+    void remove(String name);
 }

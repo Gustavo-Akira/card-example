@@ -34,4 +34,9 @@ public class SQLCardAccountRepository implements CardAccountRepository {
     public List<CardAccount> findAll() {
         return this.repository.findAll().stream().map(CardAccountEntity::toDomain).toList();
     }
+
+    @Override
+    public void remove(String accountNumber) {
+        this.repository.deleteById(accountNumber);
+    }
 }

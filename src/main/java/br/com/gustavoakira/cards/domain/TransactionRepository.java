@@ -10,4 +10,5 @@ public interface TransactionRepository {
     }
     Transaction findById(String id);
     List<Transaction> findAll();
+    void remove(String id);
 }

@@ -30,4 +30,9 @@ public class SQLTransactionRepository implements TransactionRepository {
     public List<Transaction> findAll() {
         return this.repository.findAll().stream().map(TransactionEntity::toDomain).toList();
     }
+
+    @Override
+    public void remove(String id) {
+        this.repository.deleteById(id);
+    }
 }

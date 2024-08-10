@@ -10,4 +10,5 @@ public interface CardAccountRepository {
     }
     CardAccount findById(String id);
     List<CardAccount> findAll();
+    void remove(String accountNumber);
 }

@@ -63,4 +63,13 @@ class SQLCardAccountRepositoryTest {
         List<CardAccount> saved = repository.findAll();
         assertNotEquals(0,saved.size());
     }
+
+    @Test
+    void remove(){
+        CardAccount account = Instancio.create(validCardAccountModel);
+        int oldSize = repository.findAll().size();
+        repository.save(account);
+        repository.remove(account.getAccountNumber());
+        assertEquals(oldSize,repository.findAll().size());
+    }
 }

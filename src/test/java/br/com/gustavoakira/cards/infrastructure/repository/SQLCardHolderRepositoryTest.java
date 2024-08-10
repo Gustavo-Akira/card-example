@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.instancio.Select.field;
 import static org.junit.jupiter.api.Assertions.*;
@@ -52,5 +53,13 @@ class SQLCardHolderRepositoryTest {
         this.repository.save(Collections.singletonList(cardHolder));
         CardHolder saved = this.repository.findByName(cardHolder.getName());
         assertEquals(cardHolder.getName(),saved.getName());
+    }
+
+    @Test
+    void remove(){
+        CardHolder cardHolder = Instancio.create(model);
+        this.repository.save(Collections.singletonList(cardHolder));
+        this.repository.remove(cardHolder.getName());
+        assertThrows(NoSuchElementException.class,()->this.repository.findByName(cardHolder.getName()));
     }
 }
