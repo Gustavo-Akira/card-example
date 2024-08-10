@@ -17,6 +17,13 @@ public class CardHolder {
         this.cardAccounts = cardAccounts;
     }
 
+    public CardHolder(String name, String address, String phoneNumber, List<CardAccount> cardAccounts) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.cardAccounts = cardAccounts;
+    }
+
     public Long getId() {
         return id;
     }
