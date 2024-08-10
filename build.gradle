@@ -37,8 +37,15 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	testImplementation 'org.instancio:instancio-junit:5.0.1'
+	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.jar{
+	manifest{
+		attributes["Main-Class"]="br.com.gustavoakira.cards"
+	}
 }
