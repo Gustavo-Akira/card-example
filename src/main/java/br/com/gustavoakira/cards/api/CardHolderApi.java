@@ -37,4 +37,8 @@ public class CardHolderApi {
     public CardHolderOutDTO findById(Long id){
         return CardHolderOutDTO.fromDomain(this.repository.findById(id));
     }
+
+    public void remove(String name) {
+        this.repository.remove(name);
+    }
 }

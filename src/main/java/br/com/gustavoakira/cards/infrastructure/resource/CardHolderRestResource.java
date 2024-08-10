@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/card-holder")
+@RequestMapping("api/v1/card/holder")
 public class CardHolderRestResource {
     @Autowired
     private CardHolderApi api;
@@ -23,13 +23,13 @@ public class CardHolderRestResource {
     }
 
     @PostMapping()
-    public ResponseEntity<CardHolderOutDTO> save(@RequestBody @Valid CreateCardHolder holder){
+    public ResponseEntity<Void> save(@RequestBody @Valid CreateCardHolder holder){
         this.api.save(holder);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping()
-    public ResponseEntity<CardHolderOutDTO> update(@RequestBody @Valid UpdateCardHolder holder){
+    public ResponseEntity<Void> update(@RequestBody @Valid UpdateCardHolder holder){
         this.api.update(holder);
         return ResponseEntity.ok().build();
     }
@@ -38,4 +38,11 @@ public class CardHolderRestResource {
     public ResponseEntity<CardHolderOutDTO> findById(@PathVariable Long id){
         return ResponseEntity.ok(api.findById(id));
     }
+
+    @DeleteMapping("/{name}")
+    public ResponseEntity<Void> remove(@PathVariable String name){
+        api.remove(name);
+        return ResponseEntity.ok().build();
+    }
+
 }
