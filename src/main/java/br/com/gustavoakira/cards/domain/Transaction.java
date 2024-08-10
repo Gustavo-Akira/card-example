@@ -2,6 +2,7 @@ package br.com.gustavoakira.cards.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class Transaction{
     private String transactionId;
@@ -12,6 +13,14 @@ public class Transaction{
 
     public Transaction(String transactionId, LocalDateTime transactionDate, BigDecimal amount, String type, CardAccount account) {
         this.transactionId = transactionId;
+        this.transactionDate = transactionDate;
+        this.amount = amount;
+        this.type = type;
+        this.account = account;
+    }
+
+    public Transaction( LocalDateTime transactionDate, BigDecimal amount, String type, CardAccount account) {
+        this.transactionId = UUID.randomUUID().toString();
         this.transactionDate = transactionDate;
         this.amount = amount;
         this.type = type;

@@ -14,6 +14,10 @@ public class CardAccount {
     private String cardType;
     private LocalDateTime expirationDate;
 
+    public CardAccount(){
+
+    }
+
     public CardAccount(String accountNumber, String cardHolderName, BigDecimal balance, String cardType, LocalDateTime expirationDate) {
         this.accountNumber = accountNumber;
         this.cardHolderName = cardHolderName;

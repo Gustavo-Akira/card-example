@@ -15,11 +15,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/card/account")
-public class CardAccountResource {
+public class CardAccountRestResource {
 
     private final CardAccountApi api;
 
-    public CardAccountResource(CardAccountApi api) {
+    public CardAccountRestResource(CardAccountApi api) {
         this.api = api;
     }
 
