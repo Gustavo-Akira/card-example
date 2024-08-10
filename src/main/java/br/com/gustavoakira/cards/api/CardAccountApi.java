@@ -4,10 +4,11 @@ import br.com.gustavoakira.cards.api.dto.in.CreateCardAccount;
 import br.com.gustavoakira.cards.api.dto.in.UpdateCardAccount;
 import br.com.gustavoakira.cards.api.dto.out.CardAccountOutDTO;
 import br.com.gustavoakira.cards.domain.CardAccountRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Component
 public class CardAccountApi {
     private final CardAccountRepository repository;
 

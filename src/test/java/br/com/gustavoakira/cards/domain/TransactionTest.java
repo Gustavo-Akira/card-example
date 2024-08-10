@@ -20,6 +20,7 @@ class TransactionTest {
     void shouldCallMakePaymentOnCardAccountWhenTransactionTypeNegative(){
 
         Transaction transaction = Instancio.create(negativeType);
+        transaction.getAccount().setExpirationDate(LocalDateTime.now().plusDays(1));
         BigDecimal old = transaction.getAccount().getBalance();
         transaction.makeTransaction();
         assertEquals(old.subtract(transaction.getAmount()),transaction.getAccount().getBalance());
@@ -29,6 +30,8 @@ class TransactionTest {
     void shouldCallChargeWhenTransactionTypeIsPositive(){
         Transaction transaction = Instancio.create(positiveType);
         BigDecimal old = transaction.getAccount().getBalance();
+        transaction.getAccount().setExpirationDate(LocalDateTime.now().plusDays(1));
+
         transaction.makeTransaction();
         assertEquals(transaction.getAmount().add(old), transaction.getAccount().getBalance());
     }

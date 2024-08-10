@@ -7,10 +7,11 @@ import br.com.gustavoakira.cards.api.dto.in.UpdateTransaction;
 import br.com.gustavoakira.cards.api.dto.out.CardAccountOutDTO;
 import br.com.gustavoakira.cards.api.dto.out.TransactionOutDTO;
 import br.com.gustavoakira.cards.domain.TransactionRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Component
 public class TransactionApi {
 
     private final TransactionRepository repository;
